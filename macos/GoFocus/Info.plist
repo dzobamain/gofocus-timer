@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+ "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Назва програми в Dock та меню -->
+    <key>CFBundleName</key>
+    <string>GoFocus - Timer</string>
+
+    <!-- Назва для користувача, показується у Finder та Dock -->
+    <key>CFBundleDisplayName</key>
+    <string>GoFocus - Timer</string>
+
+    <!-- Версія програми -->
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+
+    <!-- Build number -->
+    <key>CFBundleVersion</key>
+    <string>1</string>
+
+    <!-- Тип пакету -->
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+
+    <!-- Основна точка входу -->
+    <key>NSPrincipalClass</key>
+    <string>NSApplication</string>
+</dict>
+</plist>

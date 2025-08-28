@@ -1,0 +1,41 @@
+# Xcode
+DerivedData/
+build/
+*.xcworkspace
+*.xcuserdata
+*.moved-aside
+*.swp
+*.lock
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+# Swift Package Manager
+.build/
+Packages/
+.swiftpm/
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# macOS
+.DS_Store
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# User-specific files
+*.swp
+*.swo
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Keys and secrets
+*.entitlements   # якщо ти не хочеш комітити sandbox чи iCloud права

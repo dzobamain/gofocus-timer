@@ -35,16 +35,6 @@
 			path = GoFocus;
 			sourceTree = "<group>";
 		};
-		3E5A09A52E5EF14100DF6671 /* macosTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = macosTests;
-			sourceTree = "<group>";
-		};
-		3E5A09AF2E5EF14100DF6671 /* macosUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = macosUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				3E5A09932E5EF14000DF6671 /* GoFocus */,
-				3E5A09A52E5EF14100DF6671 /* macosTests */,
-				3E5A09AF2E5EF14100DF6671 /* macosUITests */,
 				3E5A09922E5EF14000DF6671 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +118,6 @@
 			dependencies = (
 				3E5A09A42E5EF14100DF6671 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				3E5A09A52E5EF14100DF6671 /* macosTests */,
-			);
 			name = macosTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +137,6 @@
 			);
 			dependencies = (
 				3E5A09AE2E5EF14100DF6671 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				3E5A09AF2E5EF14100DF6671 /* macosUITests */,
 			);
 			name = macosUITests;
 			packageProductDependencies = (
@@ -392,14 +374,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = GoFocus/GoFocus.entitlements;
+				CODE_SIGN_ENTITLEMENTS = GoFocus/Config/GoFocus.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GoFocus/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GoFocus/Info.plist;
+				INFOPLIST_FILE = GoFocus/Config/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "GoFocus - Timer";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -419,14 +401,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = GoFocus/GoFocus.entitlements;
+				CODE_SIGN_ENTITLEMENTS = GoFocus/Config/GoFocus.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GoFocus/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GoFocus/Info.plist;
+				INFOPLIST_FILE = GoFocus/Config/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (

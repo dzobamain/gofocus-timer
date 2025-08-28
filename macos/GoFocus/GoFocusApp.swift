@@ -1,5 +1,5 @@
 //
-//  macos/MacosApp.swift
+//  GoFocus/MacosApp.swift
 //
 
 import SwiftUI
@@ -13,7 +13,7 @@ struct GoFocusApp: App
     {
         WindowGroup
         {
-            ContentView()
+            ContentView().frame(minWidth: 800, maxWidth: .infinity, minHeight: 500, maxHeight: .infinity)
         }
     }
 }

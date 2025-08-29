@@ -7,8 +7,11 @@ import SwiftUI
 struct ContentView: View {
     @State private var selectedDate = Date()
 
-    var body: some View {
-        GeometryReader { geometry in
+    var body: some View
+    {
+        GeometryReader
+        {
+            geometry in
             HStack(spacing: 0)
             {
                 VStack {
@@ -41,7 +44,7 @@ struct ContentView: View {
 
     private func handleDateTap(_ date: Date)
     {
-        print("Cliced on:", date)
+        print("Clicked on:", date)
     }
 }
 
@@ -60,7 +63,8 @@ struct CalendarMonthView: View
     private var monthName: String
     {
         let formatter = DateFormatter()
-        formatter.dateFormat = "LLLL yyyy"
+        formatter.locale = Locale.current
+        formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: monthDate)
     }
     
@@ -103,10 +107,11 @@ struct CalendarMonthView: View
         .cornerRadius(10)
     }
     
-    private func daysForCalendar(month: Date) -> [Date]
-    {
+    private func daysForCalendar(month: Date) -> [Date] {
         let calendar = Calendar.current
-        guard let monthInterval = calendar.dateInterval(of: .month, for: month), let firstWeekStart = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: monthInterval.start))
+
+        guard let monthInterval = calendar.dateInterval(of: .month, for: month),
+              let firstWeekStart = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: monthInterval.start))
         else
         {
             return []
@@ -114,12 +119,32 @@ struct CalendarMonthView: View
 
         var days: [Date] = []
         var current = firstWeekStart
-        
-        while current <= monthInterval.end
+        let lastDayOfMonth = calendar.date(byAdding: .day, value: -1, to: monthInterval.end)!
+        let isLastDaySunday = calendar.component(.weekday, from: lastDayOfMonth) == 1
+
+        let lastWeekEnd: Date
+        if isLastDaySunday
         {
-            days.append(current)
+            lastWeekEnd = lastDayOfMonth
+        }
+        else
+        {
+            let lastWeekStart = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: monthInterval.end))!
+            lastWeekEnd = calendar.date(byAdding: .day, value: 6, to: lastWeekStart)!
+        }
+
+        while current <= lastWeekEnd
+        {
+            var components = calendar.dateComponents([.year, .month, .day], from: current)
+            components.hour = 12
+            
+            if let safeDate = calendar.date(from: components)
+            {
+                days.append(safeDate)
+            }
             current = calendar.date(byAdding: .day, value: 1, to: current)!
         }
+
         return days
     }
 }

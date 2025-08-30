@@ -1,5 +1,5 @@
 //
-//  GoFocus/MacosApp.swift
+//  GoFocus/GoFocusApp.swift
 //
 
 import SwiftUI

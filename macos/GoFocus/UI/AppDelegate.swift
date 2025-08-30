@@ -1,9 +1,8 @@
 //
-//  GoFocus/AppDelegate.swift
+//  GoFocus/UI/AppDelegate.swift
 //
 
 import SwiftUI
-import AppKit
 
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
 {

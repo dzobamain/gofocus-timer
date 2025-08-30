@@ -1,5 +1,5 @@
 //
-//  GoFocus/uiconfig.swift
+//  GoFocus/UI/uiconfig.swift
 //
 
 import CoreGraphics

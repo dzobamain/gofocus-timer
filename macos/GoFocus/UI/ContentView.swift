@@ -4,15 +4,19 @@
 
 import SwiftUI
 
-struct Note: Identifiable {
+struct Note: Identifiable
+{
     let id = UUID()
     let title: String
     let date: Date
 }
 
-struct ContentView: View {
-    @State private var selectedDate = Date()
-    private let notes: [Note] = [
+struct ContentView: View
+{
+    @StateObject private var calendarState = CalendarState()
+
+    private let notes: [Note] =
+    [
         Note(title: "Test", date: Date()),
         Note(title: "Test1", date: Date().addingTimeInterval(86400)),
     ]
@@ -22,18 +26,22 @@ struct ContentView: View {
         GeometryReader
         {
             geometry in
+
             HStack(spacing: 0)
             {
                 ScrollView
                 {
                     VStack(alignment: .leading, spacing: 12)
                     {
-                        ForEach(notes)
+                        ForEach(filteredNotes)
                         {
-                            note in VStack(alignment: .leading, spacing: 4)
+                            note in
+
+                            VStack(alignment: .leading, spacing: 4)
                             {
                                 Text(note.title)
                                     .font(.headline)
+
                                 Text(note.date.formatted(date: .abbreviated, time: .omitted))
                                     .font(.caption)
                                     .foregroundColor(.gray)
@@ -54,10 +62,13 @@ struct ContentView: View {
                     {
                         ForEach(0..<12)
                         {
-                            offset in CalendarMonthView(monthOffset: offset, selectedDate: $selectedDate)
-                            {
-                                tappedDate in handleDateTap(tappedDate)
-                            }
+                            offset in
+
+                            CalendarMonthView(
+                                monthOffset: offset,
+                                calendarState: calendarState,
+                                onDayTap: handleDateTap
+                            )
                         }
                     }
                     .padding()
@@ -68,17 +79,35 @@ struct ContentView: View {
             .frame(width: geometry.size.width, height: geometry.size.height)
         }
         .frame(minWidth: WINDOW_MIN_WIDTH, minHeight: WINDOW_MIN_HEIGHT)
+        .onAppear
+        {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            formatter.timeZone = TimeZone.current
+            
+            print("Clicked on:", formatter.string(from: calendarState.selectedDate))
+        }
     }
 
-    private func handleDateTap(_ date: Date)
+    private var filteredNotes: [Note]
+    {
+        notes.filter
+        {
+            Calendar.current.isDate($0.date, inSameDayAs: calendarState.selectedDate)
+        }
+    }
+
+    private func handleDateTap()
     {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         formatter.timeZone = TimeZone.current
-        print("Clicked on:", formatter.string(from: date))
+
+        print("Clicked on:", formatter.string(from: calendarState.selectedDate))
     }
 }
 
-#Preview {
+#Preview
+{
     ContentView()
 }
